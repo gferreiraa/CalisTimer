@@ -1,21 +1,37 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 import Button from '../components/Button'
 
 
 const HomeScreen = props => {
   return (
-    <View style={{ flex: 1, backgroundColor: '#D6304A'}}>
-      <Text style={{ fontFamily: 'Ubuntu-Bold', fontSize: 48, textAlign: 'center', color: 'white', marginTop: 111}}>CalisTimer</Text>
-        <Button onPress={() => props.navigation.navigate('EMOM')}>EMOM</Button>
-        <Button onPress={() => props.navigation.navigate('EMOM')}>EMOM2</Button>
-        <Button onPress={() => props.navigation.navigate('EMOM')}>EMOM3</Button>
-        <Button onPress={() => props.navigation.navigate('EMOM')}>EMOM4</Button>
+    <View style={Styles.container}>
+      <Text style={Styles.logo}>CalisTimer</Text>
+        <Button style={Styles.btn} onPress={() => props.navigation.navigate('EMOM')}>EMOM</Button>
+        <Button style={Styles.btn} onPress={() => props.navigation.navigate('EMOM')}>AMRAP</Button>
+        <Button style={Styles.btn} onPress={() => props.navigation.navigate('EMOM')}>ISOMETRIA</Button>
     </View>
   )
 }
 HomeScreen.navigationOptions = {
   header: null
 }
+const Styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    backgroundColor: '#D6304A'
+  },
+  logo: { 
+    fontFamily: 'Ubuntu-Bold', 
+    fontSize: 48, 
+    textAlign: 'center', 
+    color: 'white', 
+    marginTop: 111, 
+    marginBottom: 111 
+  },
+  btn: {
+    padding: 20
+  }
+})
 export default HomeScreen
