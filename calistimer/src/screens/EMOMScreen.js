@@ -1,23 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
-const Select = props => {
-  return (
-    <View style={{ flex: 1}}>
-      <Text style={ styleSelect.label }> Label </Text>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
-      <TouchableOpacity style={[ styleSelect.opt, styleSelect.optSelected ]}>
-        <Text style={ styleSelect.opt }>Option 01</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={[ styleSelect.opt ]}>
-        <Text style={ styleSelect.opt }>Option 01</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={[ styleSelect.opt ]}>
-        <Text style={ styleSelect.opt }>Option 01</Text>
-      </TouchableOpacity>
+class Select extends Component {
+  render(){
+    const options = ['Opt1', 'Opt2', 'Opt3' ]
+    const current = 'Opt2'
+    return (
+      <View style={{ flex: 1}}>
+        <Text style={ styleSelect.label }> Label </Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
+        { options.map( opt => {
+          return(
+            <TouchableOpacity key={opt} style={[ styleSelect.opt, opt === current ? styleSelect.optSelected : null]}>
+              <Text style={ styleSelect.opt }>{opt}</Text>
+            </TouchableOpacity>
+          )
+        })}
+        </View>
       </View>
-    </View>
-  )
+    )
+  }
 }
 
 const styleSelect = StyleSheet.create({
