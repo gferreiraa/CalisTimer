@@ -5,6 +5,11 @@ class Select extends Component {
   state = {
     current: 'Opt1'
   }
+  componentDidMount(){
+    this.setState({
+      current: this.props.current
+    })
+  }
   handlePress = opt => () => {
     this.setState({
       current: opt
@@ -59,10 +64,12 @@ const EMOMScreen = props => {
       <Text>EMOM Screen</Text>
       <Select 
       label = 'Alertas'
+      current={'desligado'}
       options = {['Desligado', '15s', '30s', '45s']}
       onSelect = { opt => console.log('Selecionado', opt)}></Select>
       <Select 
       label = 'Contagem Regresiva'
+      current: {'não'}
       options={['Sim', 'Não']}
       onSelect = { opt => console.log('Selecionado', opt)}></Select>
     </View>
